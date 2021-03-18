@@ -18,7 +18,7 @@
                 <a href="{{ route('articles.show', $article) }}"> {{ $article->title }}</a>
             </h2>
             <p>{{ $article->created_at }} 由 {{ $article->user->name }} 建立</p>
-            @if (auth()->user())
+            @if (auth()->user() && auth()->user()->id == $article->user->id)
                 <div class="flex">
                     <a class="mr-4 bg-blue-500 hover:bg-blue-700 text-white font-bold px-4" href="{{ route('articles.edit', $article) }}">編輯</a>
                     <form action="{{ route('articles.destroy', $article) }}" method="post">
